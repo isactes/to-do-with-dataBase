@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>https://www.sql-practice.com/</title>
+</head>
+
+<body>
+  <h1>SQL practice</h1>
+  <ul>
+    <h2>1: Show first name, last name, and gender of patients whose gender is 'M'</h2>
+    <p>
+      WHERE Clause Example
+      The following SQL statement selects all the patients with the gender "F", in the "patients" table:
+      SELECT * FROM patients
+      WHERE gender ='F';
+    </p>
+    <li>
+      select first_name, last_name, gender
+      from patients
+      where gender = 'M'
+    </li>
+    <h2>2: Show first name and last name of patients who does not have allergies. (null)</h2>
+    <p>
+      A field with a NULL value is a field with no value.
+
+      If a field in a table is optional, it is possible to insert a new record or update a record without adding a value
+      to this field. Then, the field will be saved with a NULL value.
+
+      How to Test for NULL Values?
+      It is not possible to test for NULL values with comparison operators, such as =, <, or <>.
+
+        We will have to use the IS NULL and IS NOT NULL operators instead.
+
+        IS NULL Syntax
+        SELECT column_names
+        FROM table_name
+        WHERE column_name IS NULL;
+        <span></span>
+    </p>
+    <li>
+      select first_name,
+      last_name
+      from patients
+      where allergies is null
+    </li>
+    <h2>3: Show first name of patients that start with the letter 'C'</h2>
+    <p>
+      The following SQL statement selects all the patients with the gender "F", in the "patients" table:
+      SELECT * FROM patients
+      WHERE gender ='F';
+      <span></span>
+      SELECT * FROM patients
+      WHERE first_name LIKE 'a%';
+      -- First names starting with 'a'.
+      -- View sql patterns for more info.
+    </p>
+    <li>
+      SELECT first_name
+      FROM patients
+      where first_name like 'C%'
+    </li>
+  </ul>
+</body>
+
+</html>
