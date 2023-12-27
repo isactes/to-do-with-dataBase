@@ -62,6 +62,145 @@
       FROM patients
       where first_name like 'C%'
     </li>
+    <h2>4: Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)</h2>
+    <p>
+      Between, inclusive range
+      SELECT * FROM patients
+      WHERE patient_id BETWEEN 4 AND 6;
+    </p>
+    <li>
+      SELECT first_name, last_name
+      FROM patients
+      where weight between 100 AND 120
+    </li>
+    <h2>5: Update the patients table for the allergies column. If the patient's allergies is null then replace it with
+      'NKA'</h2>
+    <p>
+      UPDATE Multiple Records
+      It is the WHERE clause that determines how many records will be updated.
+
+      The following SQL statement will update the allergies to 'NKA' (no known allergies) for all records where
+      allergies is NULL
+
+      UPDATE patients
+      SET allergies = 'NKA'
+      WHERE allergies IS NULL;
+      -- display the patients table
+      SELECT * FROM patients;
+    </p>
+    <li>
+      update patients
+      set allergies = 'NKA'
+      where allergies is null
+    </li>
+    <h2>6: Show first name and last name concatinated into one column to show their full name.</h2>
+    <p>
+      SQL CONCAT() Function
+      The CONCAT() function adds two or more expressions together.
+
+      Note: Depending on the language there may be a built in syntax support for concat. Eg, + or ||
+
+      Syntax
+
+      <script>CONCAT(expression1, expression2, expression3);</script>
+    <h3>Parameter Values</h3>
+    <table style="width: 100%; border: 1px solid black;">
+      <tr>
+        <th style="border:1px solid black;">Parameter</th>
+        <th style="border:1px solid black;">Description</th>
+      </tr>
+      <tr>
+        <td style="border:1px solid black;">expression1, expression2, expression3, etc.</td>
+        <td style="border:1px solid black;">Required. The expressions to add together. Note: If any of the expressions
+          is a NULL value, it returns NULL
+        </td>
+      </tr>
+    </table>
+    <h3>CONCAT() Example</h3>
+    The following SQL statement concats the first_name and last_name of each patient together:
+    SELECT CONCAT(first_name,' ', last_name) AS full_name
+    FROM patients;
+    </p>
+    <li>
+      select concat(first_name, ' ', last_name) as Full_name
+      from patients
+    </li>
+    <h2>7: Show first name, last name, and the full province name of each patient.</h2>
+    <p>
+    <h3>SQL JOIN</h3>
+    A JOIN clause is used to combine rows from two or more tables, based on a related column (primary, foreign key)
+    between them.
+    <h3>INNER JOIN Syntax</h3>
+    <span>SELECT column_name(s)
+      FROM table1
+      JOIN table2
+      ON table1.column_name = table2.column_name;</span>
+    <h4>Let's look at a selection from the "unit_dose_orders" (outdated) table:</h4>
+    <table style="width: 100%; border: 1px solid black;">
+      <tr>
+        <th style="border: 1px solid black;">unit_dose_order_id</th>
+        <th style="border: 1px solid black;">patient_id</th>
+        <th style="border: 1px solid black;">dosage</th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black;">1</td>
+        <td style="border: 1px solid black;">9</td>
+        <td style="border: 1px solid black;">0.25MG</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black;">2</td>
+        <td style="border: 1px solid black;">5</td>
+        <td style="border: 1px solid black;">50MG</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black;">3</td>
+        <td style="border: 1px solid black;">18</td>
+        <td style="border: 1px solid black;">15</td>
+      </tr>
+    </table>
+    <h4>Then, look at a selection from the "patients" table:</h4>
+    <table style="width: 100%; border: 1px solid black;">
+      <tr>
+        <th style="border: 1px solid black;">patient_id</th>
+        <th style="border: 1px solid black;">first_name</th>
+        <th style="border: 1px solid black;">last_name</th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black;">1</td>
+        <td style="border: 1px solid black;">Miyuki</td>
+        <td style="border: 1px solid black;">Riviera</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black;">2</td>
+        <td style="border: 1px solid black;">Deunan</td>
+        <td style="border: 1px solid black;">Knute</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black;">3</td>
+        <td style="border: 1px solid black;">Lois</td>
+        <td style="border: 1px solid black;">McAllister</td>
+      </tr>
+    </table>
+    <span>Notice that the "patient_id" column in the "unit_dose_orders" (outdated) table refers to the "patient_id" in
+      the "patients" table. The relationship between the two tables above is the "patient_id" column.
+
+      Then, we can create the following SQL statement (that contains an INNER JOIN), that selects records that have
+      matching values in both tables:</span>
+
+    <h3>Different Types of SQL JOINs</h3>
+    <ul>
+      <span>It is rare to need a join other than (INNER) JOIN.</span>
+      <li>DISCLAIMER: Our tool only supports INNER/LEFT JOIN</li>
+      <span>Here are the different types of the JOINs in SQL:</span>
+      <li>(INNER) JOIN: Returns records that have matching values in both tables</li>
+      <li>LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table</li>
+      <li>RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table</li>
+      <li>FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table</li>
+    </ul>
+    <li>select first_name, last_name, province_name
+      from patients
+      join province_names on province_names.province_id = patients.province_id;</li>
+    </p>
   </ul>
 </body>
 
