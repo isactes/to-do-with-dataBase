@@ -9,199 +9,251 @@
 
 <body>
   <h1>SQL practice</h1>
-  <ul>
-    <h2>1: Show first name, last name, and gender of patients whose gender is 'M'</h2>
-    <p>
-      WHERE Clause Example
-      The following SQL statement selects all the patients with the gender "F", in the "patients" table:
-      SELECT * FROM patients
-      WHERE gender ='F';
-    </p>
+  <p>
+    "Los ejercicios presentados forman parte de SQLPractice, una serie de desafíos diseñados para practicar y mejorar
+    las habilidades en SQL. Estos ejercicios están estructurados en una lista numerada, abarcando diferentes consultas
+    SQL. Es importante tener en cuenta que SQLPractice se encuentra en constante actualización, lo que significa que
+    nuevos ejercicios pueden añadirse regularmente para ofrecer una gama más amplia de desafíos y abordar distintos
+    aspectos de la manipulación de bases de datos mediante SQL. Esta actualización continua proporciona a los
+    practicantes una oportunidad constante para mejorar sus habilidades y familiarizarse con diversos escenarios que
+    podrían encontrar en situaciones reales."
+  </p>
+  <ol>
     <li>
-      select first_name, last_name, gender
-      from patients
-      where gender = 'M'
+      <h2>Show first name, last name, and gender of patients whose gender is 'M'</h2>
+      <p>
+        <code>
+          SELECT first_name, last_name, gender <br>
+          FROM patients <br>
+          WHERE gender = 'M'
+        </code>
+      </p>
     </li>
-    <h2>2: Show first name and last name of patients who does not have allergies. (null)</h2>
-    <p>
-      A field with a NULL value is a field with no value.
 
-      If a field in a table is optional, it is possible to insert a new record or update a record without adding a value
-      to this field. Then, the field will be saved with a NULL value.
-
-      How to Test for NULL Values?
-      It is not possible to test for NULL values with comparison operators, such as =, <, or <>.
-
-        We will have to use the IS NULL and IS NOT NULL operators instead.
-
-        IS NULL Syntax
-        SELECT column_names
-        FROM table_name
-        WHERE column_name IS NULL;
-        <span></span>
-    </p>
     <li>
-      select first_name,
-      last_name
-      from patients
-      where allergies is null
+      <h2>Show first name and last name of patients who do not have allergies (null)</h2>
+      <p>
+        <code>
+          SELECT first_name, last_name <br>
+          FROM patients <br>
+          WHERE allergies IS NULL
+        </code>
+      </p>
     </li>
-    <h2>3: Show first name of patients that start with the letter 'C'</h2>
-    <p>
-      The following SQL statement selects all the patients with the gender "F", in the "patients" table:
-      SELECT * FROM patients
-      WHERE gender ='F';
-      <span></span>
-      SELECT * FROM patients
-      WHERE first_name LIKE 'a%';
-      -- First names starting with 'a'.
-      -- View sql patterns for more info.
-    </p>
+
     <li>
-      SELECT first_name
-      FROM patients
-      where first_name like 'C%'
+      <h2>Show first name of patients that start with the letter 'C'</h2>
+      <p>
+        <code>
+          SELECT first_name <br>
+          FROM patients <br>
+          WHERE first_name LIKE 'C%'
+        </code>
+      </p>
     </li>
-    <h2>4: Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)</h2>
-    <p>
-      Between, inclusive range
-      SELECT * FROM patients
-      WHERE patient_id BETWEEN 4 AND 6;
-    </p>
+
     <li>
-      SELECT first_name, last_name
-      FROM patients
-      where weight between 100 AND 120
+      <h2>Show first name and last name of patients that weigh within the range of 100 to 120 (inclusive)</h2>
+      <p>
+        <code>
+          SELECT first_name, last_name <br>
+          FROM patients <br>
+          WHERE weight BETWEEN 100 AND 120
+        </code>
+      </p>
     </li>
-    <h2>5: Update the patients table for the allergies column. If the patient's allergies is null then replace it with
-      'NKA'</h2>
-    <p>
-      UPDATE Multiple Records
-      It is the WHERE clause that determines how many records will be updated.
 
-      The following SQL statement will update the allergies to 'NKA' (no known allergies) for all records where
-      allergies is NULL
-
-      UPDATE patients
-      SET allergies = 'NKA'
-      WHERE allergies IS NULL;
-      -- display the patients table
-      SELECT * FROM patients;
-    </p>
     <li>
-      update patients
-      set allergies = 'NKA'
-      where allergies is null
+      <h2>Update the patients table for the allergies column. If the patient's allergies are null, replace it with 'NKA'
+      </h2>
+      <p>
+        <code>
+          UPDATE patients <br>
+          SET allergies = 'NKA' <br>
+          WHERE allergies IS NULL
+        </code>
+      </p>
     </li>
-    <h2>6: Show first name and last name concatinated into one column to show their full name.</h2>
-    <p>
-      SQL CONCAT() Function
-      The CONCAT() function adds two or more expressions together.
 
-      Note: Depending on the language there may be a built in syntax support for concat. Eg, + or ||
-
-      Syntax
-
-      <script>CONCAT(expression1, expression2, expression3);</script>
-    <h3>Parameter Values</h3>
-    <table style="width: 100%; border: 1px solid black;">
-      <tr>
-        <th style="border:1px solid black;">Parameter</th>
-        <th style="border:1px solid black;">Description</th>
-      </tr>
-      <tr>
-        <td style="border:1px solid black;">expression1, expression2, expression3, etc.</td>
-        <td style="border:1px solid black;">Required. The expressions to add together. Note: If any of the expressions
-          is a NULL value, it returns NULL
-        </td>
-      </tr>
-    </table>
-    <h3>CONCAT() Example</h3>
-    The following SQL statement concats the first_name and last_name of each patient together:
-    SELECT CONCAT(first_name,' ', last_name) AS full_name
-    FROM patients;
-    </p>
     <li>
-      select concat(first_name, ' ', last_name) as Full_name
-      from patients
+      <h2>Show first name and last name concatenated into one column to show their full name</h2>
+      <p>
+        <code>
+          SELECT CONCAT(first_name, ' ', last_name) AS Full_name <br>
+          FROM patients
+        </code>
+      </p>
     </li>
-    <h2>7: Show first name, last name, and the full province name of each patient.</h2>
-    <p>
-    <h3>SQL JOIN</h3>
-    A JOIN clause is used to combine rows from two or more tables, based on a related column (primary, foreign key)
-    between them.
-    <h3>INNER JOIN Syntax</h3>
-    <span>SELECT column_name(s)
-      FROM table1
-      JOIN table2
-      ON table1.column_name = table2.column_name;</span>
-    <h4>Let's look at a selection from the "unit_dose_orders" (outdated) table:</h4>
-    <table style="width: 100%; border: 1px solid black;">
-      <tr>
-        <th style="border: 1px solid black;">unit_dose_order_id</th>
-        <th style="border: 1px solid black;">patient_id</th>
-        <th style="border: 1px solid black;">dosage</th>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black;">1</td>
-        <td style="border: 1px solid black;">9</td>
-        <td style="border: 1px solid black;">0.25MG</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black;">2</td>
-        <td style="border: 1px solid black;">5</td>
-        <td style="border: 1px solid black;">50MG</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black;">3</td>
-        <td style="border: 1px solid black;">18</td>
-        <td style="border: 1px solid black;">15</td>
-      </tr>
-    </table>
-    <h4>Then, look at a selection from the "patients" table:</h4>
-    <table style="width: 100%; border: 1px solid black;">
-      <tr>
-        <th style="border: 1px solid black;">patient_id</th>
-        <th style="border: 1px solid black;">first_name</th>
-        <th style="border: 1px solid black;">last_name</th>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black;">1</td>
-        <td style="border: 1px solid black;">Miyuki</td>
-        <td style="border: 1px solid black;">Riviera</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black;">2</td>
-        <td style="border: 1px solid black;">Deunan</td>
-        <td style="border: 1px solid black;">Knute</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black;">3</td>
-        <td style="border: 1px solid black;">Lois</td>
-        <td style="border: 1px solid black;">McAllister</td>
-      </tr>
-    </table>
-    <span>Notice that the "patient_id" column in the "unit_dose_orders" (outdated) table refers to the "patient_id" in
-      the "patients" table. The relationship between the two tables above is the "patient_id" column.
 
-      Then, we can create the following SQL statement (that contains an INNER JOIN), that selects records that have
-      matching values in both tables:</span>
+    <li>
+      <h2>Show first name, last name, and the full province name of each patient</h2>
+      <p>
+        <code>
+          SELECT first_name, last_name, province_name <br>
+          FROM patients <br>
+          JOIN province_names ON province_names.province_id = patients.province_id
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show first name, last name, and the full province name of each patient. Example: 'Ontario' instead of 'ON'</h2>
+      <p>
+        <code>
+          select first_name, last_name, province_name<br>
+          FROM patients <br>
+          join province_names on province_names.province_id = patients.province_id;
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show how many patients have a birth_date with 2010 as the birth year.</h2>
+      <p>
+        <code>
+          SELECT  count(*)<br>
+          FROM patients <br>
+          where year(birth_date) = 2010;
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show the first_name, last_name, and height of the patient with the greatest height.</h2>
+      <p>
+        <code>
+          SELECT first_name, last_name, MAX(height) as height<br>
+          FROM patients <br>
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show all columns for patients who have one of the following patient_ids:
+        1,45,534,879,1000</h2>
+      <p>
+        <code>
+          select *<br>
+          FROM patients <br>
+          where patient_id in (1,45,534,879,1000)
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show the total number of admissions</h2>
+      <p>
+        <code>
+          select count(*)<br>
+          from admissions <br>
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show all the columns from admissions where the patient was admitted and discharged on the same day.</h2>
+      <p>
+        <code>
+          select *<br>
+          from admissions<br>
+          where admission_date = discharge_date
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show the patient id and the total number of admissions for patient_id 579.</h2>
+      <p>
+        <code>
+          select patient_id, count()<br>
+          from admissions<br>
+          where patient_id = 579;
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Based on the cities that our patients live in, show unique cities that are in province_id 'NS'?</h2>
+      <p>
+        <code>
+          select distinct(city)<br>
+          from patients<br>
+          where province_id = 'NS';
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Write a query to find the first_name, last name and birth date of patients who has height greater than 160 and weight greater than 70</h2>
+      <p>
+        <code>
+          select first_name, last_name, birth_date<br>
+          from patients<br>
+          where height > 160 and weight > 70
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Write a query to find list of patients first_name, last_name, and allergies where allergies are not null and are from the city of 'Hamilton'</h2>
+      <p>
+        <code>
+          select first_name, last_name, allergies<br>
+          from patients<br>
+          where allergies is not null <br>
+          and city = 'Hamilton'
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show unique birth years from patients and order them by ascending.</h2>
+      <p>
+        <code>
+          select distinct(year(birth_date))<br>
+          from patients<br>
+          order by birth_date asc
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show unique first names from the patients table which only occurs once in the list.</h2>
+      <p>For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.</p>
+      <p>
+        <code>
+          select first_name<br>
+          from patients<br>
+          group by first_name <br>
+          having count(first_name) = 1
+        </code>
+      </p>
+    </li>
 
-    <h3>Different Types of SQL JOINs</h3>
-    <ul>
-      <span>It is rare to need a join other than (INNER) JOIN.</span>
-      <li>DISCLAIMER: Our tool only supports INNER/LEFT JOIN</li>
-      <span>Here are the different types of the JOINs in SQL:</span>
-      <li>(INNER) JOIN: Returns records that have matching values in both tables</li>
-      <li>LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table</li>
-      <li>RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table</li>
-      <li>FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table</li>
-    </ul>
-    <li>select first_name, last_name, province_name
-      from patients
-      join province_names on province_names.province_id = patients.province_id;</li>
-    </p>
-  </ul>
+    <li>
+      <h2>Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.</h2>
+      <p>
+        <code>
+          select patient_id, first_name<br>
+          from patients<br>
+          WHERE first_name LIKE 's____%s';
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'. Primary diagnosis is stored in the admissions table.</h2>
+      <p>
+        <code>
+          select patients.patient_id, patients.first_name, patients.last_name<br>
+          from patients<br>
+          join admissions on admissions.patient_id = patients.patient_id <br>
+          WHERE diagnosis = 'Dementia'
+        </code>
+      </p>
+    </li>
+
+  </ol>
 </body>
 
 </html>
