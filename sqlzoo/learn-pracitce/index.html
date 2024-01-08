@@ -252,6 +252,62 @@
         </code>
       </p>
     </li>
+    
+    <li>
+      <h2>Display every patient's first_name. Order the list by the length of each name and then by alphabetically.</h2>
+      <p>
+        <code>
+          select patients.patient_id<br>
+          from patients<br>
+          order by LENGTH(first_name), first_name;
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show the total amount of male patients and the total amount of female patients in the patients table.
+        Display the two results in the same row.</h2>
+      <p>
+        <span>My answer</span> <br>
+        <code>
+          SELECT 	sum(gender = "M") as total_Male, sum(gender = "F") as total_Fale<br>
+          from patients<br>
+        </code>
+      </p>
+      <p>
+        <span>Solutions</span> <br>
+        <code>
+          SELECT 	(SELECT count(*) FROM patients WHERE gender='M') AS male_count, (SELECT count(*) FROM patients WHERE gender='F') AS female_count;<br>
+        </code>
+        <code>
+          SELECT 	sum(case when gender = 'M' then 1 end) as male_count,
+          sum(case when gender = 'F' then 1 end) as female_count<br>
+          from patients <br>
+        </code>
+      </p>
+    </li>
+
+    <li>
+      <h2>Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.</h2>
+      <p>
+        <span>my Soluctions</span> <br>
+        <code>
+          select first_name, last_name, allergies<br>
+          from patients<br>
+          where allergies = 'Penicillin' OR allergies = 'Morphine' <br>
+          order by allergies asc, first_name asc, last_name asc
+        </code>
+      </p>
+      <p>
+        <span>solution</span> <br>
+        <code>
+          select first_name, last_name, allergies<br>
+          from patients<br>
+          where allergies in ('Penicillin','Morphine') <br>
+          order by allergies asc, first_name asc, last_name asc
+        </code>
+      </p>
+    </li>
 
   </ol>
 </body>
