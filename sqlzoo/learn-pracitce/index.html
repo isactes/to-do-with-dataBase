@@ -308,6 +308,62 @@
         </code>
       </p>
     </li>
+    
+    <li>
+      <h2>Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.</h2>
+      <p>
+        <span>my Soluctions</span> <br>
+        <code>
+          SELECT patient_id, diagnosis<br>
+          FROM admissions<br>
+          group by patient_id, diagnosis <br>
+          having count(*) > 1
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show the city and the total number of patients in the city.
+        Order from most to least patients and then by city name ascending.</h2>
+      <p>
+        <span>my Soluctions</span> <br>
+        <code>
+          select city,  count(city) as totlsa<br>
+          from patients<br>
+          group by city<br>
+          order by totlsa desc, city asc
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show first name, last name and role of every person that is either patient or doctor.
+        The roles are either "Patient" or "Doctor"</h2>
+      <p>
+        <span>my Soluctions</span> <br>
+        <code>
+          select first_name, last_name, 'Patient' as role<br>
+          from patients<br>
+          union all<br>
+          select first_name, last_name, 'Doctor' as role <br>
+          from doctors <br>
+        </code>
+      </p>
+    </li>
+    
+    <li>
+      <h2>Show all allergies ordered by popularity. Remove NULL values from query.</h2>
+      <p>
+        <span>my Soluctions</span> <br>
+        <code>
+          SELECT allergies, count(*) as Total_sas<br>
+          from patients<br>
+          where allergies is not null<br>
+          GROUP BY allergies <br>
+          ORDER BY Total_sas DESC;<br>
+        </code>
+      </p>
+    </li>
 
   </ol>
 </body>
