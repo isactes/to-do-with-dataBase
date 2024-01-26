@@ -607,6 +607,46 @@
           </code>
         </p>
       </li>
+
+      <li>
+        <h2>
+          For each doctor, display their id, full name, and the first and last
+          admission date they attended.
+        </h2>
+        <p>
+          <span>my Soluctions</span> <br />
+          <code>
+            select doctors.doctor_id, concat(doctors.first_name,' ',
+            doctors.last_name) as full_name, min(admissions.admission_date) as
+            first_admin, max(admissions.admission_date) as last_admin<br />
+            from doctors<br />
+            join admissions on doctors.doctor_id =
+            admissions.attending_doctor_id<br />
+            group by doctors.doctor_id, doctors.first_name,
+            doctors.last_name;<br />
+          </code>
+        </p>
+      </li>
+      
+      <li>
+        <h2>
+          Display the total amount of patients for each province. Order by descending.
+        </h2>
+        <p>
+          <span>my Soluctions</span> <br />
+          <code>
+            SELECT province_names.province_name,
+                  COUNT(*) AS total_patients<br />
+                  FROM province_names<br />
+                  JOIN
+                  patients ON patients.province_id = province_names.province_id<br />
+                  GROUP BY
+                  province_names.province_name<br />
+                  ORDER BY
+  total_patients DESC; <br>
+          </code>
+        </p>
+      </li>
     </ol>
   </body>
 </html>
