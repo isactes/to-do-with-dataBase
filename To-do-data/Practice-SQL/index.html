@@ -627,23 +627,21 @@
           </code>
         </p>
       </li>
-      
+
       <li>
         <h2>
-          Display the total amount of patients for each province. Order by descending.
+          Display the total amount of patients for each province. Order by
+          descending.
         </h2>
         <p>
           <span>my Soluctions</span> <br />
           <code>
-            SELECT province_names.province_name,
-                  COUNT(*) AS total_patients<br />
-                  FROM province_names<br />
-                  JOIN
-                  patients ON patients.province_id = province_names.province_id<br />
-                  GROUP BY
-                  province_names.province_name<br />
-                  ORDER BY
-  total_patients DESC; <br>
+            SELECT province_names.province_name, COUNT(*) AS total_patients<br />
+            FROM province_names<br />
+            JOIN patients ON patients.province_id =
+            province_names.province_id<br />
+            GROUP BY province_names.province_name<br />
+            ORDER BY total_patients DESC; <br />
           </code>
         </p>
       </li>
