@@ -1,310 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>https://www.sql-practice.com/</title>
-  </head>
 
-  <body>
-    <h1>SQL practice</h1>
-    <p>
-      "Los ejercicios presentados forman parte de SQLPractice, una serie de
-      desafíos diseñados para practicar y mejorar las habilidades en SQL. Estos
-      ejercicios están estructurados en una lista numerada, abarcando diferentes
-      consultas SQL. Es importante tener en cuenta que SQLPractice se encuentra
-      en constante actualización, lo que significa que nuevos ejercicios pueden
-      añadirse regularmente para ofrecer una gama más amplia de desafíos y
-      abordar distintos aspectos de la manipulación de bases de datos mediante
-      SQL. Esta actualización continua proporciona a los practicantes una
-      oportunidad constante para mejorar sus habilidades y familiarizarse con
-      diversos escenarios que podrían encontrar en situaciones reales."
-    </p>
-    <ol>
-      <li>
-        <h2>
-          Show first name, last name, and gender of patients whose gender is 'M'
-        </h2>
-        <p>
-          <code>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>https://www.sql-practice.com/</title>
+</head>
+
+<body>
+  <h1>SQL practice</h1>
+  <p>
+    "Los ejercicios presentados forman parte de SQLPractice, una serie de
+    desafíos diseñados para practicar y mejorar las habilidades en SQL. Estos
+    ejercicios están estructurados en una lista numerada, abarcando diferentes
+    consultas SQL. Es importante tener en cuenta que SQLPractice se encuentra
+    en constante actualización, lo que significa que nuevos ejercicios pueden
+    añadirse regularmente para ofrecer una gama más amplia de desafíos y
+    abordar distintos aspectos de la manipulación de bases de datos mediante
+    SQL. Esta actualización continua proporciona a los practicantes una
+    oportunidad constante para mejorar sus habilidades y familiarizarse con
+    diversos escenarios que podrían encontrar en situaciones reales."
+  </p>
+  <ol>
+    <li>
+      <h2>
+        Show first name, last name, and gender of patients whose gender is 'M'
+      </h2>
+      <p>
+        <code>
             SELECT first_name, last_name, gender <br />
             FROM patients <br />
             WHERE gender = 'M'
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show first name and last name of patients who do not have allergies
-          (null)
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show first name and last name of patients who do not have allergies
+        (null)
+      </h2>
+      <p>
+        <code>
             SELECT first_name, last_name <br />
             FROM patients <br />
             WHERE allergies IS NULL
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>Show first name of patients that start with the letter 'C'</h2>
-        <p>
-          <code>
+    <li>
+      <h2>Show first name of patients that start with the letter 'C'</h2>
+      <p>
+        <code>
             SELECT first_name <br />
             FROM patients <br />
             WHERE first_name LIKE 'C%'
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show first name and last name of patients that weigh within the range
-          of 100 to 120 (inclusive)
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show first name and last name of patients that weigh within the range
+        of 100 to 120 (inclusive)
+      </h2>
+      <p>
+        <code>
             SELECT first_name, last_name <br />
             FROM patients <br />
             WHERE weight BETWEEN 100 AND 120
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Update the patients table for the allergies column. If the patient's
-          allergies are null, replace it with 'NKA'
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Update the patients table for the allergies column. If the patient's
+        allergies are null, replace it with 'NKA'
+      </h2>
+      <p>
+        <code>
             UPDATE patients <br />
             SET allergies = 'NKA' <br />
             WHERE allergies IS NULL
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show first name and last name concatenated into one column to show
-          their full name
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show first name and last name concatenated into one column to show
+        their full name
+      </h2>
+      <p>
+        <code>
             SELECT CONCAT(first_name, ' ', last_name) AS Full_name <br />
             FROM patients
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show first name, last name, and the full province name of each patient
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show first name, last name, and the full province name of each patient
+      </h2>
+      <p>
+        <code>
             SELECT first_name, last_name, province_name <br />
             FROM patients <br />
             JOIN province_names ON province_names.province_id =
             patients.province_id
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show first name, last name, and the full province name of each
-          patient. Example: 'Ontario' instead of 'ON'
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show first name, last name, and the full province name of each
+        patient. Example: 'Ontario' instead of 'ON'
+      </h2>
+      <p>
+        <code>
             select first_name, last_name, province_name<br />
             FROM patients <br />
             join province_names on province_names.province_id =
             patients.province_id;
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show how many patients have a birth_date with 2010 as the birth year.
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show how many patients have a birth_date with 2010 as the birth year.
+      </h2>
+      <p>
+        <code>
             SELECT count(*)<br />
             FROM patients <br />
             where year(birth_date) = 2010;
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show the first_name, last_name, and height of the patient with the
-          greatest height.
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show the first_name, last_name, and height of the patient with the
+        greatest height.
+      </h2>
+      <p>
+        <code>
             SELECT first_name, last_name, MAX(height) as height<br />
             FROM patients <br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show all columns for patients who have one of the following
-          patient_ids: 1,45,534,879,1000
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show all columns for patients who have one of the following
+        patient_ids: 1,45,534,879,1000
+      </h2>
+      <p>
+        <code>
             select *<br />
             FROM patients <br />
             where patient_id in (1,45,534,879,1000)
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>Show the total number of admissions</h2>
-        <p>
-          <code>
+    <li>
+      <h2>Show the total number of admissions</h2>
+      <p>
+        <code>
             select count(*)<br />
             from admissions <br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show all the columns from admissions where the patient was admitted
-          and discharged on the same day.
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show all the columns from admissions where the patient was admitted
+        and discharged on the same day.
+      </h2>
+      <p>
+        <code>
             select *<br />
             from admissions<br />
             where admission_date = discharge_date
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show the patient id and the total number of admissions for patient_id
-          579.
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show the patient id and the total number of admissions for patient_id
+        579.
+      </h2>
+      <p>
+        <code>
             select patient_id, count()<br />
             from admissions<br />
             where patient_id = 579;
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Based on the cities that our patients live in, show unique cities that
-          are in province_id 'NS'?
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Based on the cities that our patients live in, show unique cities that
+        are in province_id 'NS'?
+      </h2>
+      <p>
+        <code>
             select distinct(city)<br />
             from patients<br />
             where province_id = 'NS';
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Write a query to find the first_name, last name and birth date of
-          patients who has height greater than 160 and weight greater than 70
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Write a query to find the first_name, last name and birth date of
+        patients who has height greater than 160 and weight greater than 70
+      </h2>
+      <p>
+        <code>
             select first_name, last_name, birth_date<br />
             from patients<br />
             where height > 160 and weight > 70
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Write a query to find list of patients first_name, last_name, and
-          allergies where allergies are not null and are from the city of
-          'Hamilton'
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Write a query to find list of patients first_name, last_name, and
+        allergies where allergies are not null and are from the city of
+        'Hamilton'
+      </h2>
+      <p>
+        <code>
             select first_name, last_name, allergies<br />
             from patients<br />
             where allergies is not null <br />
             and city = 'Hamilton'
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show unique birth years from patients and order them by ascending.
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show unique birth years from patients and order them by ascending.
+      </h2>
+      <p>
+        <code>
             select distinct(year(birth_date))<br />
             from patients<br />
             order by birth_date asc
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show unique first names from the patients table which only occurs once
-          in the list.
-        </h2>
-        <p>
-          For example, if two or more people are named 'John' in the first_name
-          column then don't include their name in the output list. If only 1
-          person is named 'Leo' then include them in the output.
-        </p>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show unique first names from the patients table which only occurs once
+        in the list.
+      </h2>
+      <p>
+        For example, if two or more people are named 'John' in the first_name
+        column then don't include their name in the output list. If only 1
+        person is named 'Leo' then include them in the output.
+      </p>
+      <p>
+        <code>
             select first_name<br />
             from patients<br />
             group by first_name <br />
             having count(first_name) = 1
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show patient_id and first_name from patients where their first_name
-          start and ends with 's' and is at least 6 characters long.
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show patient_id and first_name from patients where their first_name
+        start and ends with 's' and is at least 6 characters long.
+      </h2>
+      <p>
+        <code>
             select patient_id, first_name<br />
             from patients<br />
             WHERE first_name LIKE 's____%s';
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show patient_id, first_name, last_name from patients whos diagnosis is
-          'Dementia'. Primary diagnosis is stored in the admissions table.
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Show patient_id, first_name, last_name from patients whos diagnosis is
+        'Dementia'. Primary diagnosis is stored in the admissions table.
+      </h2>
+      <p>
+        <code>
             select patients.patient_id, patients.first_name,
             patients.last_name<br />
             from patients<br />
@@ -312,291 +313,291 @@
             <br />
             WHERE diagnosis = 'Dementia'
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Display every patient's first_name. Order the list by the length of
-          each name and then by alphabetically.
-        </h2>
-        <p>
-          <code>
+    <li>
+      <h2>
+        Display every patient's first_name. Order the list by the length of
+        each name and then by alphabetically.
+      </h2>
+      <p>
+        <code>
             select patients.patient_id<br />
             from patients<br />
             order by LENGTH(first_name), first_name;
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show the total amount of male patients and the total amount of female
-          patients in the patients table. Display the two results in the same
-          row.
-        </h2>
-        <p>
-          <span>My answer</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show the total amount of male patients and the total amount of female
+        patients in the patients table. Display the two results in the same
+        row.
+      </h2>
+      <p>
+        <span>My answer</span> <br />
+        <code>
             SELECT sum(gender = "M") as total_Male, sum(gender = "F") as
             total_Fale<br />
             from patients<br />
           </code>
-        </p>
-        <p>
-          <span>Solutions</span> <br />
-          <code>
+      </p>
+      <p>
+        <span>Solutions</span> <br />
+        <code>
             SELECT (SELECT count(*) FROM patients WHERE gender='M') AS
             male_count, (SELECT count(*) FROM patients WHERE gender='F') AS
             female_count;<br />
           </code>
-          <code>
+        <code>
             SELECT sum(case when gender = 'M' then 1 end) as male_count,
             sum(case when gender = 'F' then 1 end) as female_count<br />
             from patients <br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show first and last name, allergies from patients which have allergies
-          to either 'Penicillin' or 'Morphine'. Show results ordered ascending
-          by allergies then by first_name then by last_name.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show first and last name, allergies from patients which have allergies
+        to either 'Penicillin' or 'Morphine'. Show results ordered ascending
+        by allergies then by first_name then by last_name.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             select first_name, last_name, allergies<br />
             from patients<br />
             where allergies = 'Penicillin' OR allergies = 'Morphine' <br />
             order by allergies asc, first_name asc, last_name asc
           </code>
-        </p>
-        <p>
-          <span>solution</span> <br />
-          <code>
+      </p>
+      <p>
+        <span>solution</span> <br />
+        <code>
             select first_name, last_name, allergies<br />
             from patients<br />
             where allergies in ('Penicillin','Morphine') <br />
             order by allergies asc, first_name asc, last_name asc
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show patient_id, diagnosis from admissions. Find patients admitted
-          multiple times for the same diagnosis.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show patient_id, diagnosis from admissions. Find patients admitted
+        multiple times for the same diagnosis.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             SELECT patient_id, diagnosis<br />
             FROM admissions<br />
             group by patient_id, diagnosis <br />
             having count(*) > 1
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show the city and the total number of patients in the city. Order from
-          most to least patients and then by city name ascending.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show the city and the total number of patients in the city. Order from
+        most to least patients and then by city name ascending.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             select city, count(city) as totlsa<br />
             from patients<br />
             group by city<br />
             order by totlsa desc, city asc
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show first name, last name and role of every person that is either
-          patient or doctor. The roles are either "Patient" or "Doctor"
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show first name, last name and role of every person that is either
+        patient or doctor. The roles are either "Patient" or "Doctor"
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             select first_name, last_name, 'Patient' as role<br />
             from patients<br />
             union all<br />
             select first_name, last_name, 'Doctor' as role <br />
             from doctors <br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show all allergies ordered by popularity. Remove NULL values from
-          query.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show all allergies ordered by popularity. Remove NULL values from
+        query.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             SELECT allergies, count(*) as Total_sas<br />
             from patients<br />
             where allergies is not null<br />
             GROUP BY allergies <br />
             ORDER BY Total_sas DESC;<br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show all patient's first_name, last_name, and birth_date who were born
-          in the 1970s decade. Sort the list starting from the earliest
-          birth_date.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show all patient's first_name, last_name, and birth_date who were born
+        in the 1970s decade. Sort the list starting from the earliest
+        birth_date.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             SELECT first_name, last_name, birth_date<br />
             from patients<br />
             where year(birth_date) between 1970 and 1979<br />
             order by Date(birth_date) asc<br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          We want to display each patient's full name in a single column. Their
-          last_name in all upper letters must appear first, then first_name in
-          all lower case letters. Separate the last_name and first_name with a
-          comma. Order the list by the first_name in decending order EX:
-          SMITH,jane
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        We want to display each patient's full name in a single column. Their
+        last_name in all upper letters must appear first, then first_name in
+        all lower case letters. Separate the last_name and first_name with a
+        comma. Order the list by the first_name in decending order EX:
+        SMITH,jane
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             SELECT first_name, last_name, birth_date<br />
             from patients<br />
             where year(birth_date) between 1970 and 1979<br />
             order by Date(birth_date) asc<br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          We want to display each patient's full name in a single column. Their
-          last_name in all upper letters must appear first, then first_name in
-          all lower case letters. Separate the last_name and first_name with a
-          comma. Order the list by the first_name in decending order EX:
-          SMITH,jane
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        We want to display each patient's full name in a single column. Their
+        last_name in all upper letters must appear first, then first_name in
+        all lower case letters. Separate the last_name and first_name with a
+        comma. Order the list by the first_name in decending order EX:
+        SMITH,jane
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             SELECT concat(upper(last_name), ',', lower(first_name)) as
             name_full<br />
             from patients<br />
             order by first_name desc<br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show the province_id(s), sum of height; where the total sum of its
-          patient's height is greater than or equal to 7,000.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show the province_id(s), sum of height; where the total sum of its
+        patient's height is greater than or equal to 7,000.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             SELECT province_id, SUM(height) AS sum_height <br />
             FROM patients <br />
             GROUP BY province_id <br />
             HAVING sum_height >= 7000 <br />
             ORDER BY sum_height; <br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show the difference between the largest weight and smallest weight for
-          patients with the last name 'Maroni'
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show the difference between the largest weight and smallest weight for
+        patients with the last name 'Maroni'
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             select (Max(weight) - Min(weight)) as weight_we<br />
             FROM patients <br />
             where last_name = 'Maroni'<br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show all of the days of the month (1-31) and how many admission_dates
-          occurred on that day. Sort by the day with most admissions to least
-          admissions.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show all of the days of the month (1-31) and how many admission_dates
+        occurred on that day. Sort by the day with most admissions to least
+        admissions.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             select day(admission_date) as days_s, count(admission_date) as
             count_s<br />
             from admissions<br />
             group by days_s<br />
             order by count_s desc<br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show all columns for patient_id 542's most recent admission_date.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show all columns for patient_id 542's most recent admission_date.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             select *<br />
             from admissions<br />
             where patient_id = 542<br />
             group by patient_id<br />
             having admission_date = max(admission_date);<br />
           </code>
-        </p>
-      </li>
-      <li>
-        <h2>
-          Show patient_id, attending_doctor_id, and diagnosis for admissions
-          that match one of the two criteria: 1. patient_id is an odd number and
-          attending_doctor_id is either 1, 5, or 19. 2. attending_doctor_id
-          contains a 2 and the length of patient_id is 3 characters.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+      </p>
+    </li>
+    <li>
+      <h2>
+        Show patient_id, attending_doctor_id, and diagnosis for admissions
+        that match one of the two criteria: 1. patient_id is an odd number and
+        attending_doctor_id is either 1, 5, or 19. 2. attending_doctor_id
+        contains a 2 and the length of patient_id is 3 characters.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             SELECT patient_id, attending_doctor_id, diagnosis<br />
             FROM admissions<br />
             WHERE (patient_id % 2 <> 0 AND attending_doctor_id IN (1, 5, 19)) OR
             (attending_doctor_id LIKE '%2%' AND LENGTH(patient_id) = 3);<br />
           </code>
-        </p>
-      </li>
+      </p>
+    </li>
 
-      <li>
-        <h2>
-          Show first_name, last_name, and the total number of admissions
-          attended for each doctor. Every admission has been attended by a
-          doctor.
-        </h2>
-        <p>
-          <span>my Soluctions</span> <br />
-          <code>
+    <li>
+      <h2>
+        Show first_name, last_name, and the total number of admissions
+        attended for each doctor. Every admission has been attended by a
+        doctor.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
             select doctors.first_name, doctors.last_name,
             count(admissions.patient_id) as admin_total<br />
             from doctors<br />
@@ -605,8 +606,108 @@
             group by doctors.doctor_id, doctors.first_name,
             doctors.last_name;<br />
           </code>
-        </p>
-      </li>
-    </ol>
-  </body>
+      </p>
+    </li>
+
+    <li>
+      <h2>
+        For each doctor, display their id, full name, and the first and last
+        admission date they attended.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
+            select doctors.doctor_id, concat(doctors.first_name,' ',
+            doctors.last_name) as full_name, min(admissions.admission_date) as
+            first_admin, max(admissions.admission_date) as last_admin<br />
+            from doctors<br />
+            join admissions on doctors.doctor_id =
+            admissions.attending_doctor_id<br />
+            group by doctors.doctor_id, doctors.first_name,
+            doctors.last_name;<br />
+          </code>
+      </p>
+    </li>
+
+    <li>
+      <h2>
+        Display the total amount of patients for each province. Order by
+        descending.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
+            SELECT province_names.province_name, COUNT(*) AS total_patients<br />
+            FROM province_names<br />
+            JOIN patients ON patients.province_id =
+            province_names.province_id<br />
+            GROUP BY province_names.province_name<br />
+            ORDER BY total_patients DESC; <br />
+          </code>
+      </p>
+    </li>
+
+    <li>
+      <h2>
+        For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name
+        who diagnosed their problem.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
+            SELECT concat(patients.first_name, ' ' , patients.last_name) as name_full,<br />
+            admissions.diagnosis, <br>
+            concat(doctors.first_name, ' ', doctors.last_name) as doctor_name <br>
+            FROM patients<br />
+            join admissions on admissions.patient_id = patients.patient_id<br />
+            join doctors on doctors.doctor_id = admissions.attending_doctor_id<br />
+          </code>
+      </p>
+    </li>
+
+    <li>
+      <h2>
+        display the first name, last name and number of duplicate patients based on their first name and last name. Ex:
+        A patient with an identical name can be considered a duplicate.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
+            select first_name, last_name, count(*) as cous_total<br />
+            FROM patients<br />
+            group by first_name, last_name<br />
+            having count(*) > 1<br />
+          </code>
+      </p>
+    </li>
+
+    <li>
+      <h2>
+        Display patient's full name,
+        height in the units feet rounded to 1 decimal,
+        weight in the unit pounds rounded to 0 decimals,
+        birth_date,
+        gender non abbreviated.
+
+        Convert CM to feet by dividing by 30.48.
+        Convert KG to pounds by multiplying by 2.205.
+      </h2>
+      <p>
+        <span>my Soluctions</span> <br />
+        <code>
+            select CONCAT(first_name, ' ', last_name) AS name_full,<br />
+            ROUND(height / 30.48, 1) AS height_aa, <br>
+            ROUND(weight * 2.205, 0) AS weight_aa, <br>
+            birth_date, <br>
+            CASE <br>
+            WHEN gender = 'M' THEN 'MALE' <br>
+            WHEN gender = 'F' THEN 'FEMALE' <br>
+            END AS gender <br>
+            FROM patients<br />
+          </code>
+      </p>
+    </li>
+  </ol>
+</body>
+
 </html>
