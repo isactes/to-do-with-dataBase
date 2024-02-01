@@ -8,7 +8,7 @@ Este repositorio contiene mis soluciones a los ejercicios diarios de SQL de [SQL
 
 ## Ejecución de los Ejercicios
 
-Para ejecutar los scripts SQL, puedes utilizar tu entorno favorito de SQL. Si estás buscando una opción ligera, puedes usar herramientas en línea como [SQLite Online](https://sqliteonline.com/) o [db-fiddle](https://www.db-fiddle.com/).
+Para ejecutar los scripts SQL, puedes utilizar [SQL Practice](https://www.sql-practice.com/).
 
 ## Registro de Progreso
 <!-- 

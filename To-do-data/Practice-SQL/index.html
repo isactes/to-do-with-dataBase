@@ -711,3 +711,25 @@
 </body>
 
 </html>
+        </p>
+      </li>
+
+      <li>
+        <h2>
+          Show patient_id, first_name, last_name from patients whose does not
+          have any records in the admissions table. (Their patient_id does not
+          exist in any admissions.patient_id rows.)
+        </h2>
+        <p>
+          <span>my Soluctions</span> <br />
+          <code>
+            SELECT patients.patient_id, patients.first_name,
+            patients.last_name<br />
+            FROM patients<br />
+            where patient_id not in ( select patient_id from admissions ) <br />
+          </code>
+        </p>
+      </li>
+    </ol>
+  </body>
+</html>
