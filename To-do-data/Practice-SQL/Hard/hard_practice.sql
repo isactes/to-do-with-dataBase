@@ -22,3 +22,34 @@ SELECT
     END AS isObese
 FROM 
     patients;
+
+-- Questions: Show patient_id, first_name, last_name, and attending doctor's specialty. Show only the patients who has a diagnosis as 'Epilepsy' and the doctor's first name is 'Lisa' Check patients, admissions, and doctors tables for required information. 
+-- Solution:
+SELECT
+  patients.patient_id,
+  patients.first_name,
+  patients.last_name,
+  doctors.specialty
+FROM patients
+  JOIN admissions ON  patients.patient_id = admissions.patient_id
+  JOIN doctors  ON admissions.attending_doctor_id = doctors.doctor_id
+WHERE admissions.diagnosis = 'Epilepsy'
+  AND doctors.first_name = 'Lisa';
+
+
+-- Questions: All patients who have gone through admissions, can see their medical documents on our site. Those patients are given a temporary password after their first admission. Show the patient_id and temp_password.
+--The password must be the following, in order:
+--1. patient_id
+--2. the numerical length of patient's last_name
+--3. year of patient's birth_date
+-- Solution:
+select
+	DISTINCT
+  patients.patient_id,
+  concat(
+    patients.patient_id,
+    len(patients.last_name),
+    year(patients.birth_date)
+  ) as password
+from patients
+join admissions on patients.patient_id = admissions.patient_id
