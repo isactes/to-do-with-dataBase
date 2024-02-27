@@ -71,3 +71,34 @@ FROM (
     FROM admissions
   )
 GROUP BY has_insurance
+
+-- Questions:_ We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:
+-- First_name contains an 'r' after the first two letters.
+-- Identifies their gender as 'F'
+-- Born in February, May, or December
+-- Their weight would be between 60kg and 80kg
+-- Their patient_id is an odd number
+-- They are from the city 'Kingston'
+-- Solution:
+select *
+from patients
+where
+  first_name like '__r%'
+  and gender = 'F'
+  and weight between 60 and 80
+  and city = 'Kingston'
+
+-- Questions: Show the percent of patients that have 'M' as their gender. Round the answer to the nearest hundreth number and in percent form.
+-- Solution:
+SELECT CONCAT(
+    ROUND(
+      (
+        SELECT COUNT(*)
+        FROM patients
+        WHERE gender = 'M'
+      ) / CAST(COUNT(*) as float),
+      4
+    ) * 100,
+    '%'
+  ) as percent_of_male_patients
+FROM patients;
