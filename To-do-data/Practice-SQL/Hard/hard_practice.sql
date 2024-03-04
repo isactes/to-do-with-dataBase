@@ -102,3 +102,47 @@ SELECT CONCAT(
     '%'
   ) as percent_of_male_patients
 FROM patients;
+
+-- Questions: For each day display the total amount of admissions on that day. Display the amount changed from the previous date.
+-- Solution: 
+select
+  admission_date,
+  count(admission_date) as admission_day,
+  count(admission_date) - lag(count(admission_date)) over(order by admission_date) as admissions_count_change
+from admissions
+group by admission_date
+
+-- Questions:Sort the province names in ascending order in such a way that the province 'Ontario' is always on top.
+-- Solution: 
+SELECT province_name
+FROM province_names
+ORDER BY
+  (
+    CASE
+      WHEN province_name = 'Ontario' THEN 0
+      ELSE province_name
+    END
+  );
+
+-- Questions:We need a breakdown for the total amount of admissions each doctor has started each year. Show the doctor_id, doctor_full_name, specialty, year, total_admissions for that year.
+-- Solution: 
+select
+  doctors.doctor_id,
+  concat(
+    doctors.first_name,
+    ' ',
+    doctors.last_name
+  ) as doctor_name,
+  doctors.specialty,
+  year(admissions.admission_date) as year_ano,
+  count(admissions.admission_date) as total_admin
+from doctors
+  left join admissions on doctors.doctor_id = admissions.attending_doctor_id
+where
+  year(admissions.admission_date) = [year_ano]
+group by
+  doctors.doctor_id,
+  year_ano
+
+
+
