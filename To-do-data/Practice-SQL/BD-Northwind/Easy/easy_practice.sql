@@ -65,3 +65,11 @@ select
   last_name,
   MAX(hire_date)
 from employees
+
+-- Description: Show the average unit price rounded to 2 decimal places, the total units in stock, total discontinued products from the products table.
+-- Solucioton:
+SELECT
+   ROUND(AVG(unit_price), 2) AS unit_precio,
+   ROUND(sum(units_in_stock)) AS unit_stock,
+   ROUND(sum(discontinued)) AS discon_tinued
+FROM products
